@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<head runat="server">
+    <title>Tip Calculator</title>
+    <link href="tipcal1.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+    <meta charset="utf-8" />
+
+    
+    <script type="text/javascript">
+        "use strict";
+        var $ = function (id) {
+            return document.getElementById(id);
+        };
+
+            var a = 1;
+            function increasePercent(){
+                document.getElementById("percent").value = a;
+                a=a+1;
+            }
+
+            function decreasePercent() {
+                document.getElementById("percent").value = a;
+                a = a - 1;
+            }
+
+            var b = 1;
+            function increasePeople() {
+                document.getElementById("people").value = b;
+                b = b + 1;
+            }
+
+            var b = 1;
+            function decreasePeople() {
+                document.getElementById("people").value = b;
+                b = b - 1;
+            }
+
+
+
+         var calculateFullAmount = function (bill, percent, billbypercent) {
+             var billbypercent = (bill * percent);
+             var fullamount = (billbypercent / 100 + bill);
+             fullamount = fullamount.toFixed(2);
+             return fullamount;
+         };
+
+         var calculateTotalPerPerson = function (bill, percent, billbypercent, people) {
+             var billbypercent = (bill * percent);
+             var fullamount = (billbypercent / 100 + bill);
+             var totalperperson = (fullamount / people);
+             totalperperson = totalperperson.toFixed(2);
+             return totalperperson;
+         };
+
+
+         var calculateTipPerPerson = function (bill, percent, billbypercent, people) {
+             var billbypercent = (bill * percent);
+             var fulltipamount = (billbypercent / 100);
+             var tipperperson = (fulltipamount / people);
+             tipperperson = tipperperson.toFixed(2);
+             return tipperperson;
+         };
+
+
+        var processEntries = function () {
+            var bill = parseFloat($("bill").value);
+            var percent = parseFloat($("percent").value);
+            var people = parseFloat($("people").value);
+            var billbypercent = parseFloat($("billbypercent").value);
+            var fullamount = parseFloat($("fullamount").value);
+            var totalperperson = parseFloat($("totalperperson").value);
+            var tipperperson = parseFloat($("tipperperson").value);
+            $("fullamount").value = calculateFullAmount(bill, percent, billbypercent);
+            $("totalperperson").value = calculateTotalPerPerson(bill, percent, billbypercent, people);
+            $("tipperperson").value = calculateTipPerPerson(bill, percent, billbypercent, people);
+            if (isNaN(bill) || isNaN(percent) || isNaN(people)) {
+                alert("Please enter numeric value.");
+            }
+        };
+        window.onload = function () {
+            $("calculate").onclick = processEntries;
+            $("bill").focus();
+        };
+
+    </script>
+</head>
+
+<body>
+    <!--#1 Top of Form-->
+    <div class="top"></div>
+
+    <!--#2 Content with border-->
+    <div class="body-content">
+        <!--<%-- #A Left Channel-%>-->
+        <div class="leftchannel"></div>
+
+        <!--<%-- #B Middle Channel-%>-->
+        <div class="middle">
+            <div id="rcorners">
+            <div class="title">Tip Calculator</div>
+            <div class="space"></div>
+                <br />
+            <!--Bill Entry-->
+            <div class="entrylabel">
+                <label class="label-text">Bill</label>
+            </div>
+            <div>
+                <input id="bill" class="entrytext">
+            </div>
+                <br />
+            <!--Tip Percent Entry-->
+            <div class="entrylabel">
+                <label class="label-text">Tip %</label>
+            <div class="col-sm-4 buttonwrapper">
+                <input id="percent" class="entrytext"  disabled>
+                <button class="buttonleft" type="button" onclick="decreasePercent()">-</button>
+                <button class="buttonright" type="button" onclick="increasePercent()">+</button>
+            </div>
+                <br />
+            <!--Number of People Entry-->
+            <div class="entrylabel">
+                <label class="label-text">Number of People</label>
+            </div>
+            <div class="col-sm-4 buttonwrapper">
+                <input id="people" class="entrytext" disabled>
+                <button class="buttonleft" type="button" onclick="decreasePeople()">-</button>
+                <button class="buttonright" type="button" onclick="increasePeople()">+</button>
+            </div>
+                <br />
+            <!--Tip Per Person Answer-->
+            <div>
+                <div>
+                    <label class="label" for="tipperperson">Tip</label>
+                    <div>
+                        <label class="entrylabel" for="tipperperson">Per Person</label>
+                        <span>
+                            <output class="label" type="text" id="tipperperson" disabled></output>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--Total Per Person Answer-->
+            <div>
+                <div>
+                    <label class="label" for=" totalperperson">Total</label>
+                    <div>
+                        <label class="entrylabel" for="totalperperson">Per Person</label>
+                        <span>
+                            <output class="label" type="text" id="totalperperson" disabled></output>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--Full Amount Answer-->
+            <div>
+                <label class="fullamountlabel" for="fullamount">Full Amount</label>
+                <div>
+                    <output type="text" id="fullamount" class="fullamountlabel" disabled></output>
+                </div>
+            </div>
+</div>
+            <!--I DID NOT DELETE THIS CODE BECAUSE EVERYTIME I DO, IT DISRUPTS THE FUNCTIONS-->
+            <label for="billbypercent"></label>
+            <label type="text" id="billbypercent" disabled></label>
+                <br>
+
+                <!--Calculate Button-->
+                <label>&nbsp;</label>
+                <input type="button" id="calculate" class="calculatebutton"  value="Calculate"><br>
+
+
+                <!--<%-- #C Right Channel-%>-->
+                <div class="rightchannel"></div>
+            </div>
+          </div>
+        </div>
+        <!--#3 Bottom of Form-->
+        <div class="bottom"></div>
+</body>
+
+
+
+    

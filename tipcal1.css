@@ -1,0 +1,98 @@
+﻿body-content {
+    border: thin;
+    border-color:blue;
+}
+
+.leftchannel {
+    width: 30px;
+    height:auto;
+}
+
+.rightchannel {
+    width: 10px;
+    height: auto;
+}
+
+.middle {
+    width: 220px;
+    padding-right: 250px;
+    padding-left: 250px;
+    position: center;
+    border: thin;
+    border-color: blue;
+}
+
+#rcorners {
+    border-radius: 25px;
+    background: #73AD21;
+    background-color: white;
+    border-style:solid;
+    border-color: midnightblue;
+    padding: 20px;
+    width: 163px;
+    height: 400px;
+}
+
+.title {
+    background-color:skyblue;
+    width: 170px;
+    background-size: 250px;
+    font-size:x-large;
+    font-family:Arial;
+    text-align:center;
+}
+
+.top{
+    background-color:skyblue;
+}
+
+.entrylabel{
+    font-size:small;
+    font-family:Arial;
+}
+
+.entrytext{
+    border-radius:5px;
+    border-style:inset;
+    height: 20px;
+}
+
+.label{
+    font-size: large;
+    font-family: Arial;
+}
+
+.fullamountlabel{
+    font-size:x-large;
+    font-family:Arial;
+    text-align:right;
+}
+
+.buttonleft{
+    border-style:inset;
+    float:left;
+}
+
+.buttonright {
+    border-style: inset;
+    float: right;
+}
+
+span {
+    padding-left: 15px;
+}
+
+.buttonwrapper {
+    display: inline-block;
+}
+
+input,
+button {
+    background-color: transparent;
+}
+
+
+.calculatebutton{
+    position:center;
+    float:initial;
+}
